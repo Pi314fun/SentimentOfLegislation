@@ -389,9 +389,36 @@ This section provides a brief overview of the main files and their usage.
 - **/Documents/**: Contains documentation and visualizations of the data collection pipelines and preprocessing steps.
 - **/BillData/**: Contains legislative data files.
 
-## Contributing
+## Citations
 
-We welcome contributions to this project. Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) file for guidelines on how to contribute.
+If you use this code or the models provided in this repository, please cite the following works:
+
+### TweetEval Sentiment Analysis Model
+
+```bibtex
+@inproceedings{barbieri-etal-2020-tweeteval,
+    title = "{T}weet{E}val: Unified Benchmark and Comparative Evaluation for Tweet Classification",
+    author = "Barbieri, Francesco  and
+      Camacho-Collados, Jose  and
+      Espinosa Anke, Luis  and
+      Neves, Leonardo",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2020",
+    month = nov,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2020.findings-emnlp.148",
+    doi = "10.18653/v1/2020.findings-emnlp.148",
+    pages = "1644--1650"
+}
+
+@article{Liu2019RoBERTaAR,
+  title={RoBERTa: A Robustly Optimized BERT Pretraining Approach},
+  author={Yinhan Liu and Myle Ott and Naman Goyal and Jingfei Du and Mandar Joshi and Danqi Chen and Omer Levy and Mike Lewis and Luke Zettlemoyer and Veselin Stoyanov},
+  journal={arXiv preprint arXiv:1907.11692},
+  year={2019}
+}
+```
 
 ## License
 
