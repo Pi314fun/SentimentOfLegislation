@@ -1,0 +1,42 @@
+// Project Pipeline Visualization
+digraph {
+	TA [label="Twitter: Import Modules and Authenticate"]
+	TB [label="Twitter: Load and Print JSON Structure"]
+	TC [label="Twitter: Read and Combine JSON Files"]
+	TD [label="Twitter: Export to CSV"]
+	TE [label="Twitter: EDA"]
+	TA -> TB
+	TB -> TC
+	TC -> TD
+	TD -> TE
+	LA [label="LegiScan: Import Modules and Read Config"]
+	LB [label="LegiScan: Search Laws"]
+	LC [label="LegiScan: Save Search Results"]
+	LD [label="LegiScan: Fetch Bill Details"]
+	LE [label="LegiScan: Save Detailed Bills to JSON"]
+	LF [label="LegiScan: Process and Save to CSV"]
+	LG [label="LegiScan: EDA"]
+	LA -> LB
+	LB -> LC
+	LC -> LD
+	LD -> LE
+	LE -> LF
+	LF -> LG
+	G1 [label="Graph: Construct Heterogeneous Graph"]
+	G2 [label="Graph: PCA and Embeddings"]
+	G3 [label="Graph: Sentiment Aggregation"]
+	G4 [label="Graph: GNN Model Training and Evaluation"]
+	TE -> G1
+	LG -> G1
+	G1 -> G2
+	G2 -> G3
+	G3 -> G4
+	TE [label="Twitter EDA
+Extract and analyze Twitter data"]
+	LG [label="LegiScan EDA
+Analyze detailed bill data"]
+	G1 [label="Construct Graph
+Combine Twitter and LegiScan data into a graph"]
+	G4 [label="Model Evaluation
+Evaluate GNN model performance"]
+}

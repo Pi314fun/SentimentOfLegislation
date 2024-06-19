@@ -1,0 +1,47 @@
+// Project Pipeline Visualization
+digraph {
+	rankdir=TB size="8,12"
+	subgraph cluster_twitter {
+		color=lightgrey fontname="Helvetica Bold" fontsize=12 label="Twitter API Pipeline" labeljust=c style=filled
+		node [color=lightblue fontname=Helvetica fontsize=11 shape=box style=filled]
+		edge [color=blue style=bold]
+		TA [label="Import Modules and Authenticate"]
+		TB [label="Load and Print JSON Structure"]
+		TC [label="Read and Combine JSON Files"]
+		TD [label="Export to CSV"]
+		TE [label=EDA]
+		TA -> TB
+		TB -> TC
+		TC -> TD
+		TD -> TE
+	}
+	subgraph cluster_legiscan {
+		color=lightgrey fontname="Helvetica Bold" fontsize=12 label="LegiScan API Pipeline" labeljust=c style=filled
+		node [color=lightblue fontname=Helvetica fontsize=11 shape=box style=filled]
+		edge [color=blue style=bold]
+		LA [label="Import Modules and Read Config"]
+		LB [label="Search Laws"]
+		LC [label="Save Search Results"]
+		LD [label="Fetch Bill Details"]
+		LE [label="Save Detailed Bills to JSON"]
+		LF [label="Process and Save to CSV"]
+		LG [label=EDA]
+		LA -> LB
+		LB -> LC
+		LC -> LD
+		LD -> LE
+		LE -> LF
+		LF -> LG
+	}
+	node [color=lightblue fontname=Helvetica fontsize=11 shape=box style=filled]
+	edge [color=blue style=bold]
+	G1 [label="Construct Heterogeneous Graph"]
+	G2 [label="PCA and Embeddings"]
+	G3 [label="Sentiment Aggregation"]
+	G4 [label="GNN Model Training and Evaluation"]
+	TE -> G1
+	LG -> G1
+	G1 -> G2
+	G2 -> G3
+	G3 -> G4
+}

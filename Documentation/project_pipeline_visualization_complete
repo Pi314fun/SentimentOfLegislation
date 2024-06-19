@@ -1,0 +1,81 @@
+// Project Pipeline Visualization
+digraph {
+	fontsize=10 rankdir=TB size="6,8"
+	subgraph cluster_twitter {
+		color=lightgrey fontname="Helvetica Bold" fontsize=11 label="Twitter API" labeljust=c style=filled
+		node [color=lightblue fontname=Helvetica fontsize=10 shape=box style=filled]
+		edge [color=blue fontsize=10 style=bold]
+		TA [label="Auth & Import"]
+		TB [label="Load JSON"]
+		TC [label="Combine JSON"]
+		TD [label="Export CSV"]
+		TE [label=EDA]
+		TA -> TB
+		TB -> TC
+		TC -> TD
+		TD -> TE
+		TF [label="Load Data"]
+		TG [label="Text Preproc."]
+		TH [label="Remove Non-Eng & Ads"]
+		TI [label="Metrics & Log Norm"]
+		TJ [label="Generate Embeds"]
+		TK [label="Remove Dups"]
+		TL [label="Sentiment Analysis"]
+		TM [label="Dim Reduction"]
+		TE -> TF
+		TF -> TG
+		TG -> TH
+		TH -> TI
+		TI -> TJ
+		TJ -> TK
+		TK -> TL
+		TL -> TM
+	}
+	subgraph cluster_legiscan {
+		color=lightgrey fontname="Helvetica Bold" fontsize=11 label="LegiScan API" labeljust=c style=filled
+		node [color=lightblue fontname=Helvetica fontsize=10 shape=box style=filled]
+		edge [color=blue fontsize=10 style=bold]
+		LA [label="Auth & Import"]
+		LB [label="Search Laws"]
+		LC [label="Save Results"]
+		LD [label="Fetch Details"]
+		LE [label="Save JSON"]
+		LF [label="Process CSV"]
+		LG [label=EDA]
+		LA -> LB
+		LB -> LC
+		LC -> LD
+		LD -> LE
+		LE -> LF
+		LF -> LG
+		LH [label="Load Data"]
+		LI [label="Text Preproc."]
+		LJ [label="Format & Clean"]
+		LK [label="Combine Text"]
+		LL [label="Generate Embeds"]
+		LM [label="Remove Dups"]
+		LN [label="Dim Reduction"]
+		LO [label="Prepare Data"]
+		LP [label="Sentiment Analysis"]
+		LG -> LH
+		LH -> LI
+		LI -> LJ
+		LJ -> LK
+		LK -> LL
+		LL -> LM
+		LM -> LN
+		LN -> LO
+		LO -> LP
+	}
+	node [color=lightblue fontname=Helvetica fontsize=10 shape=box style=filled]
+	edge [color=blue fontsize=10 style=bold]
+	G1 [label="Construct Graph"]
+	G2 [label="PCA & Embeds"]
+	G3 [label="Aggregate Sentiments"]
+	G4 [label="Train GNN"]
+	TM -> G1
+	LP -> G1
+	G1 -> G2
+	G2 -> G3
+	G3 -> G4
+}
